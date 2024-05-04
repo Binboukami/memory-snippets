@@ -34,11 +34,11 @@ Arena* CreateArena(size_t size)
 
 	void* data_offset = mem + sizeof(Arena);
 
-	Arena* arena = mem; // Set the dataning of the memory block as the header
+	Arena* arena = mem; // Set the arena struct memory block as the header
 	
 	arena->offset = 0;
 	arena->capacity = size;
-	arena->data = data_offset;
+	arena->data = data_offset; // Set the remaining block as the data
 
 	return arena;
 }
