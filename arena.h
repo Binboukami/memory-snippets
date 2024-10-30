@@ -21,7 +21,7 @@ Arena* CreateArena(size_t size)
 	{
 		fprintf(
 				stderr,
-				"Maximum arena size exceeded: Failed to allocate with size '%i'(bytes)\n",
+				"Maximum arena size exceeded: Failed to allocate with size '%lu'(bytes)\n",
 				size);
 
 		return NULL;
@@ -50,7 +50,7 @@ void* ArenaAlloc(Arena* arena, size_t size)
 	if(overflows)
 	{
 		fprintf(stderr,
-				"Maximum arena size exceeded: Failed to allocate with size '%i'(bytes)\n",
+				"Maximum arena size exceeded: Failed to allocate with size '%lu'(bytes)\n",
 				size);
 
 		return NULL;
