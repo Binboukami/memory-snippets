@@ -32,9 +32,9 @@ Arena* CreateArena(size_t size)
 
 	memset(mem, 0, sizeof(Arena) + size);
 
-	void* data_offset = mem + sizeof(Arena);
+	void* data_offset = (char*)(mem) + sizeof(Arena);
 
-	Arena* arena = mem; // Set the arena struct memory block as the header
+	Arena* arena = (Arena*)mem; // Set the arena struct memory block as the header
 	
 	arena->offset = 0;
 	arena->capacity = size;
@@ -58,7 +58,7 @@ void* ArenaAlloc(Arena* arena, size_t size)
 
 	arena->offset += size;
 
-	return arena->data + arena->offset;
+	return (char*)arena->data + arena->offset;
 }
 
 size_t ArenaRemainingSize(Arena* arena)
